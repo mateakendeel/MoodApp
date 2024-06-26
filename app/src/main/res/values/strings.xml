@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MoodApp</string>
+    <string name="my_notes">Mood Journal</string>
+    <string name="search_notes">Search notes</string>
+    <string name="note_title">Note Title</string>
+    <string name="note_subtitle">Note Subtitle</string>
+    <string name="type_note_here">Type note here...</string>
+    <string name="change_color">Change Color</string>
+    <string name="pick_color">Pick Color</string>
+
+</resources>

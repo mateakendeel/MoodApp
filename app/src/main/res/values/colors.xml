@@ -33,7 +33,7 @@
     <!--    background colors-->
     <color name="quick_actions_background">#343841</color>
     <color name="search_background">#343841</color>
-    <color name="change_color_background">#1F1F1F</color>
+    <color name="change_color_background">#343841</color>
 
 
 

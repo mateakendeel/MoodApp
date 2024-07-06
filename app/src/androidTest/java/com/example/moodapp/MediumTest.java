@@ -24,9 +24,9 @@ public class MediumTest {
     public void testCreateAndSaveNewNote() {
         Espresso.onView(ViewMatchers.withId(R.id.imageAddNotMain))
                 .perform(ViewActions.click());
-        Espresso.onView(ViewMatchers.withId(R.id.inputNoteTitle))
+        Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .perform(ViewActions.typeText("Mood2"));
-        Espresso.onView(ViewMatchers.withId(R.id.inputNoteSubtitle))
+        Espresso.onView(ViewMatchers.withId(R.id.inputSubtitle))
                 .perform(ViewActions.typeText("Emotion2"));
         Espresso.onView(ViewMatchers.withId(R.id.inputNote))
                 .perform(ViewActions.typeText("I feel sad."));

@@ -28,9 +28,9 @@ public class MainActivityTest {
                 .perform(ViewActions.click());
 
 
-        Espresso.onView(ViewMatchers.withId(R.id.inputNoteTitle))
+        Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .perform(ViewActions.typeText("Mood1"));
-        Espresso.onView(ViewMatchers.withId(R.id.inputNoteSubtitle))
+        Espresso.onView(ViewMatchers.withId(R.id.inputSubtitle))
                 .perform(ViewActions.typeText("Emotion"));
         Espresso.onView(ViewMatchers.withId(R.id.inputNote))
                 .perform(ViewActions.typeText("I feel happy"));

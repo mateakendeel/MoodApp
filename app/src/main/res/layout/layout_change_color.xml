@@ -16,7 +16,7 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="Change Color"
+        android:text="Change Mood"
         android:textColor="@color/white"
         android:textSize="13sp"/>
 
@@ -144,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:text="@string/pick_color"
+            android:text="Pick mood"
             android:textColor="@color/white"
             android:textSize="13sp"
             />
@@ -154,21 +154,23 @@
     <LinearLayout
         android:id="@+id/layoutDeleteNote"
         android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:ignore="UseCompoundDrawables"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        tools:ignore="UseCompoundDrawables">
+        >
 
         <ImageView
+            android:src="@drawable/ic_delete"
+            app:tint="@color/color_delete"
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_22sdp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_delete"
-            app:tint="@color/color_delete" />
+             />
 
         <TextView
             android:id="@+id/textDeleteNote"

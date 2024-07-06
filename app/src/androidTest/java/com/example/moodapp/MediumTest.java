@@ -32,7 +32,7 @@ public class MediumTest {
                 .perform(ViewActions.typeText("I feel sad."));
 
 
-        Espresso.onView(ViewMatchers.withId(R.id.imageSave))
+        Espresso.onView(ViewMatchers.withId(R.id.imageSaveNote))
                 .perform(ViewActions.click());
 
         try {

@@ -1,7 +1,6 @@
 package com.example.moodapp.activities;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +15,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +52,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        ImageView imageBack = findViewById(R.id.imageBack);
+        ImageView imageBack = findViewById(R.id.imageArrowBack);
         imageBack.setOnClickListener(v -> onBackPressed());
 
         inputNoteTitle = findViewById(R.id.inputNoteTitle);
@@ -68,7 +66,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                 "EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault()).format(new Date().getTime())
         );
 
-        ImageView imageSave = findViewById(R.id.imageSave);
+        ImageView imageSave = findViewById(R.id.imageSaveNote);
         imageSave.setOnClickListener(v -> saveNote());
 
         selectedNoteColor = "#333333";
@@ -155,7 +153,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
         layoutChangeColor.findViewById(R.id.viewColor1).setOnClickListener(v -> {
             selectedNoteColor = "#333333";
-            imageColor1.setImageResource(R.drawable.ic_done);
+            imageColor1.setImageResource(R.drawable.ic_save);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
             imageColor4.setImageResource(0);
@@ -166,7 +164,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         layoutChangeColor.findViewById(R.id.viewColor2).setOnClickListener(v -> {
             selectedNoteColor = "#FDBE3B";
             imageColor1.setImageResource(0);
-            imageColor2.setImageResource(R.drawable.ic_done);
+            imageColor2.setImageResource(R.drawable.ic_save);
             imageColor3.setImageResource(0);
             imageColor4.setImageResource(0);
             imageColor5.setImageResource(0);
@@ -177,7 +175,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             selectedNoteColor = "#FF4842";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
-            imageColor3.setImageResource(R.drawable.ic_done);
+            imageColor3.setImageResource(R.drawable.ic_save);
             imageColor4.setImageResource(0);
             imageColor5.setImageResource(0);
             setSubtitleIndicatorColor();
@@ -188,7 +186,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
-            imageColor4.setImageResource(R.drawable.ic_done);
+            imageColor4.setImageResource(R.drawable.ic_save);
             imageColor5.setImageResource(0);
             setSubtitleIndicatorColor();
         });
@@ -199,7 +197,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
             imageColor4.setImageResource(0);
-            imageColor5.setImageResource(R.drawable.ic_done);
+            imageColor5.setImageResource(R.drawable.ic_save);
             setSubtitleIndicatorColor();
         });
 

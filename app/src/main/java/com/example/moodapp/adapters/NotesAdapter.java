@@ -58,7 +58,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             public void onClick(View view) {
                 int adapterPosition = holder.getAdapterPosition();
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    notesListener.onNoteClicked(notes.get(adapterPosition), adapterPosition);
+                    notesListener.onClickedNote(notes.get(adapterPosition), adapterPosition);
                 }
             }
         });

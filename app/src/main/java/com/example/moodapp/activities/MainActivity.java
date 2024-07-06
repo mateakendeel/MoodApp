@@ -1,38 +1,25 @@
 package com.example.moodapp.activities;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Patterns;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.moodapp.R;
-import com.example.moodapp.activities.CreateNoteActivity;
 import com.example.moodapp.adapters.NotesAdapter;
-import com.example.moodapp.database.NotesDatabase;
+import com.example.moodapp.database.Database;
 import com.example.moodapp.entities.Note;
 import com.example.moodapp.listeners.NotesListener;
 
@@ -131,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
             @Override
             protected List<Note> doInBackground(Void... voids) {
-                return NotesDatabase.getNotesDatabase(getApplicationContext())
+                return Database.getDatabase(getApplicationContext())
                         .noteDao().getAllNotes();
             }
 

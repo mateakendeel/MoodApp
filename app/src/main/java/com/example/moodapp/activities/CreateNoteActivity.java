@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moodapp.R;
-import com.example.moodapp.database.NotesDatabase;
+import com.example.moodapp.database.Database;
 import com.example.moodapp.entities.Note;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
@@ -117,7 +117,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         class SaveNoteTask extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                NotesDatabase.getNotesDatabase(getApplicationContext()).noteDao().insertNote(note);
+                Database.getDatabase(getApplicationContext()).noteDao().insertNote(note);
                 return null;
             }
 
@@ -249,7 +249,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
                     @Override
                     protected Void doInBackground(Void... voids) {
-                        NotesDatabase.getNotesDatabase(getApplicationContext()).noteDao().deleteNote(alreadyAvailableNote);
+                        Database.getDatabase(getApplicationContext()).noteDao().deleteNote(alreadyAvailableNote);
                         return null;
                     }
 

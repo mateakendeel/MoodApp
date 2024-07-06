@@ -6,7 +6,7 @@ import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.moodapp.database.NotesDatabase;
+import com.example.moodapp.database.Database;
 import com.example.moodapp.entities.Note;
 
 import org.junit.After;
@@ -20,17 +20,17 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 public class DatabaseTest {
-    private NotesDatabase notesDatabase;
+    private Database database;
 
     @Before
     public void initDb() {
         Context context = ApplicationProvider.getApplicationContext();
-        notesDatabase = Room.inMemoryDatabaseBuilder(context, NotesDatabase.class).build();
+        database = Room.inMemoryDatabaseBuilder(context, Database.class).build();
     }
 
     @After
     public void closeDb() throws IOException {
-        notesDatabase.close();
+        database.close();
     }
 
     @Test
@@ -41,8 +41,8 @@ public class DatabaseTest {
         note.setSubtitle("Test Subtitle");
         note.setNoteText("Test Note Text");
 
-        notesDatabase.noteDao().insertNote(note);
-        Note dbNote = notesDatabase.noteDao().getAllNotes().get(0);
+        database.noteDao().insertNote(note);
+        Note dbNote = database.noteDao().getAllNotes().get(0);
 
         assertEquals(dbNote.getTitle(), "Test Title");
     }
@@ -55,8 +55,8 @@ public class DatabaseTest {
         note.setSubtitle("Test Subtitle");
         note.setNoteText("Test Note Text");
 
-        notesDatabase.noteDao().insertNote(note);
-        Note dbNote = notesDatabase.noteDao().getAllNotes().get(0);
+        database.noteDao().insertNote(note);
+        Note dbNote = database.noteDao().getAllNotes().get(0);
 
         assertEquals(dbNote.getDateTime(), "2024-06-05 10:00:00");
     }
@@ -69,8 +69,8 @@ public class DatabaseTest {
         note.setSubtitle("Test Subtitle");
         note.setNoteText("Test Note Text");
 
-        notesDatabase.noteDao().insertNote(note);
-        Note dbNote = notesDatabase.noteDao().getAllNotes().get(0);
+        database.noteDao().insertNote(note);
+        Note dbNote = database.noteDao().getAllNotes().get(0);
 
         assertEquals(dbNote.getSubtitle(), "Test Subtitle");
     }

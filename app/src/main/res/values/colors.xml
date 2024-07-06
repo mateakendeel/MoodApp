@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--    main colors-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#201D1D</color>
     <color name="main_color_dark">#2E2B2B</color>
 
-    <color name="accent">#00BCD4</color>
+    <!--    text colors-->
+    <color name="text">#7B7B7B</color>
+    <color name="text_subtitle">#CECECE</color>
 
-    <color name="quick_actions_background">#2F2D2E</color>
+    <!--    icon colors-->
+    <color name="accent">#00BCD4</color>
+    <color name="icons">#A4A4A4</color>
     <color name="search_icon">#DBDBDB</color>
 
-    <color name="text">#7B7B7B</color>
-
-    <color name="icons">#A4A4A4</color>
-    <color name="text_subtitle">#CECECE</color>
+    <!--    note colors-->
     <color name="default_note">#333333</color>
     <color name="note_subtitle_text">#FAFAFA</color>
-    <color name="change_color_background">#1F1F1F</color>
     <color name="note_color2">#00BCD4</color>
     <color name="note_color3">#4CAF50</color>
     <color name="note_color4">#2196F3</color>
     <color name="note_color5">#000000</color>
-    <color name="color_delete">#4CAF50</color>
+
+    <!--    background colors-->
+    <color name="quick_actions_background">#2F2D2E</color>
     <color name="search_background">#333333</color>
+    <color name="change_color_background">#1F1F1F</color>
+
+
+
+
+
+
+
+
+
+    <color name="color_delete">#4CAF50</color>
+
 
 
 

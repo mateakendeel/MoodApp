@@ -47,7 +47,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="12dp"
             android:background="@null"
-            android:hint="@string/search_notes"
+            android:hint="Search"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:includeFontPadding="false"

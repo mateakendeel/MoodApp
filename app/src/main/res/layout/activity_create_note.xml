@@ -84,7 +84,7 @@
           android:textColorHint="@color/text"
           android:textSize="14sp"
           android:background="@null"
-          android:hint="@string/note_subtitle"
+          android:hint="Subtitle"
           android:importantForAutofill="no"
           android:includeFontPadding="false"
           android:inputType="textMultiLine"

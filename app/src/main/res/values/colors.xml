@@ -13,17 +13,17 @@
 
     <color name="text">#7B7B7B</color>
 
-    <color name="colorIcons">#A4A4A4</color>
-    <color name="colorTextSubtitle">#CECECE</color>
-    <color name="colorDefaultNoteColor">#333333</color>
-    <color name="colorNoteSubtitleText">#FAFAFA</color>
-    <color name="colorChangeColorBackground">#1F1F1F</color>
-    <color name="colorNoteColor2">#00BCD4</color>
-    <color name="colorNoteColor3">#4CAF50</color>
-    <color name="colorNoteColor4">#2196F3</color>
-    <color name="colorNoteColor5">#000000</color>
-    <color name="colorDelete">#4CAF50</color>
-    <color name="colorSearchBackground">#333333</color>
+    <color name="icons">#A4A4A4</color>
+    <color name="text_subtitle">#CECECE</color>
+    <color name="default_note">#333333</color>
+    <color name="note_subtitle_text">#FAFAFA</color>
+    <color name="change_color_background">#1F1F1F</color>
+    <color name="note_color2">#00BCD4</color>
+    <color name="note_color3">#4CAF50</color>
+    <color name="note_color4">#2196F3</color>
+    <color name="note_color5">#000000</color>
+    <color name="color_delete">#4CAF50</color>
+    <color name="search_background">#333333</color>
 
 
 

@@ -41,9 +41,6 @@ public class CreateNoteActivity extends AppCompatActivity {
     private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
     private TextView textDateTime;
     private View viewSubtitleIndicator;
-    private ImageView imageNote;
-    private TextView textWebURL;
-    private LinearLayout layoutWebURL;
 
     private String selectedNoteColor;
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;

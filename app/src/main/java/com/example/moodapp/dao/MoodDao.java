@@ -11,7 +11,7 @@ import com.example.moodapp.entities.Note;
 import java.util.List;
 
 @Dao
-public interface NoteDao {
+public interface MoodDao {
     @Query("SELECT * FROM notes ORDER BY id DESC")
     List<Note> getAllNotes();
 

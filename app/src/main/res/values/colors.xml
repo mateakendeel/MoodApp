@@ -10,14 +10,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#1E232E</color>
-    <color name="main_color_dark">#42454D</color>
+    <color name="main_color_dark">#343841</color>
 
     <!--    text colors-->
     <color name="text">#A4A4A4</color>
     <color name="text_subtitle">#CECECE</color>
 
     <!--    icon colors-->
-    <color name="accent">#007FD4</color>
+    <color name="accent">#334CD3</color>
     <color name="icons">#A4A4A4</color>
     <color name="search_icon">#DBDBDB</color>
 
@@ -31,8 +31,8 @@
     <color name="color_delete">#F40404</color>
 
     <!--    background colors-->
-    <color name="quick_actions_background">#2F2D2E</color>
-    <color name="search_background">#333333</color>
+    <color name="quick_actions_background">#343841</color>
+    <color name="search_background">#343841</color>
     <color name="change_color_background">#1F1F1F</color>
 
 

@@ -36,7 +36,7 @@ import java.util.Locale;
 public class CreateNoteActivity extends AppCompatActivity {
     private static final String TAG = CreateNoteActivity.class.getSimpleName();
 
-    private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
+    private EditText inputTitle, inputSubtitle, inputText;
     private TextView textDateTime;
     private View viewSubtitleIndicator;
 
@@ -55,9 +55,9 @@ public class CreateNoteActivity extends AppCompatActivity {
         ImageView imageBack = findViewById(R.id.imageArrowBack);
         imageBack.setOnClickListener(v -> onBackPressed());
 
-        inputNoteTitle = findViewById(R.id.inputTittleName);
-        inputNoteSubtitle = findViewById(R.id.inputSubtitle);
-        inputNoteText = findViewById(R.id.inputNoteText);
+        inputTitle = findViewById(R.id.inputTittleName);
+        inputSubtitle = findViewById(R.id.inputSubtitle);
+        inputText = findViewById(R.id.inputNoteText);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
 
 
@@ -69,7 +69,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         ImageView imageSave = findViewById(R.id.imageSaveNote);
         imageSave.setOnClickListener(v -> saveNote());
 
-        selectedNoteColor = "#333333";
+        selectedNoteColor = "#343841";
 
         if (getIntent().getBooleanExtra("isViewOrUpdate", false)) {
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
@@ -81,17 +81,17 @@ public class CreateNoteActivity extends AppCompatActivity {
     }
 
     private void setViewOrUpdateNote() {
-        inputNoteTitle.setText(alreadyAvailableNote.getTitle());
-        inputNoteSubtitle.setText(alreadyAvailableNote.getSubtitle());
-        inputNoteText.setText(alreadyAvailableNote.getNoteText());
+        inputTitle.setText(alreadyAvailableNote.getTitle());
+        inputSubtitle.setText(alreadyAvailableNote.getSubtitle());
+        inputText.setText(alreadyAvailableNote.getNoteText());
         textDateTime.setText(alreadyAvailableNote.getDateTime());
 
     }
 
     private void saveNote() {
-        final String noteTitle = inputNoteTitle.getText().toString().trim();
-        final String noteSubtitle = inputNoteSubtitle.getText().toString().trim();
-        final String noteText = inputNoteText.getText().toString().trim();
+        final String noteTitle = inputTitle.getText().toString().trim();
+        final String noteSubtitle = inputSubtitle.getText().toString().trim();
+        final String noteText = inputText.getText().toString().trim();
         final String dateTimeStr = textDateTime.getText().toString().trim();
 
         if (noteTitle.isEmpty()) {

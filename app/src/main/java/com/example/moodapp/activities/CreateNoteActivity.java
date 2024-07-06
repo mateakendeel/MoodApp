@@ -152,7 +152,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         final ImageView imageColor5 = layoutChangeColor.findViewById(R.id.imageColor5);
 
         layoutChangeColor.findViewById(R.id.viewColor1).setOnClickListener(v -> {
-            selectedNoteColor = "#333333";
+            selectedNoteColor = "#FFC107";
             imageColor1.setImageResource(R.drawable.ic_save);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
@@ -162,7 +162,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor2).setOnClickListener(v -> {
-            selectedNoteColor = "#FDBE3B";
+            selectedNoteColor = "#2196F3";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(R.drawable.ic_save);
             imageColor3.setImageResource(0);
@@ -172,7 +172,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor3).setOnClickListener(v -> {
-            selectedNoteColor = "#FF4842";
+            selectedNoteColor = "#F62D1E";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(R.drawable.ic_save);
@@ -182,7 +182,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor4).setOnClickListener(v -> {
-            selectedNoteColor = "#3A52FC";
+            selectedNoteColor = "#673AB7";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
@@ -192,7 +192,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor5).setOnClickListener(v -> {
-            selectedNoteColor = "#000000";
+            selectedNoteColor = "#E91E63";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
@@ -205,16 +205,16 @@ public class CreateNoteActivity extends AppCompatActivity {
             final String noteColorCode = alreadyAvailableNote.getColor();
             if (noteColorCode != null && !noteColorCode.trim().isEmpty()) {
                 switch (noteColorCode) {
-                    case "#FDBE3B":
+                    case "#2196F3":
                         layoutChangeColor.findViewById(R.id.viewColor2).performClick();
                         break;
-                    case "#FF4842":
+                    case "#F62D1E":
                         layoutChangeColor.findViewById(R.id.viewColor3).performClick();
                         break;
-                    case "#3A52FC":
+                    case "#673AB7":
                         layoutChangeColor.findViewById(R.id.viewColor4).performClick();
                         break;
-                    case "#000000":
+                    case "#E91E63":
                         layoutChangeColor.findViewById(R.id.viewColor5).performClick();
                         break;
                 }

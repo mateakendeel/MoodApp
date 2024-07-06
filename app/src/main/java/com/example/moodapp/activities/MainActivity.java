@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
 
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(v -> startActivityForResult(
-                new Intent(getApplicationContext(), CreateNoteActivity.class), REQUEST_CODE_ADD_NOTE)
+                new Intent(getApplicationContext(), CreateMoodActivity.class), REQUEST_CODE_ADD_NOTE)
         );
 
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         });
 
         findViewById(R.id.imageAddNote).setOnClickListener(v -> startActivityForResult(
-                new Intent(getApplicationContext(), CreateNoteActivity.class), REQUEST_CODE_ADD_NOTE));
+                new Intent(getApplicationContext(), CreateMoodActivity.class), REQUEST_CODE_ADD_NOTE));
     }
 
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
     @Override
     public void onClickedNote(Note note, int position) {
         noteClickedPosition = position;
-        Intent intent = new Intent(getApplicationContext(), CreateNoteActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CreateMoodActivity.class);
         intent.putExtra("isViewOrUpdate", true);
         intent.putExtra("note", note);
         startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);

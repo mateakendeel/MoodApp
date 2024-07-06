@@ -33,19 +33,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CreateNoteActivity extends AppCompatActivity {
-    private static final String TAG = CreateNoteActivity.class.getSimpleName();
+public class CreateMoodActivity extends AppCompatActivity {
+    private static final String TAG = CreateMoodActivity.class.getSimpleName();
 
     private EditText inputTitle, inputSubtitle, inputText;
     private TextView textDateTime;
     private View viewSubtitleIndicator;
 
-    private String selectedNoteColor;
+    private String selectedMoodColor;
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
-    private AlertDialog dialogDeleteNote;
+    private AlertDialog dialogDeleteMood;
 
-    private Note alreadyAvailableNote;
+    private Note availableNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,28 +67,28 @@ public class CreateNoteActivity extends AppCompatActivity {
         );
 
         ImageView imageSave = findViewById(R.id.imageSaveNote);
-        imageSave.setOnClickListener(v -> saveNote());
+        imageSave.setOnClickListener(v -> saveMood());
 
-        selectedNoteColor = "#343841";
+        selectedMoodColor = "#343841";
 
         if (getIntent().getBooleanExtra("isViewOrUpdate", false)) {
-            alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
+            availableNote = (Note) getIntent().getSerializableExtra("note");
             setViewOrUpdateNote();
         }
 
-        initMiscellaneous();
+        initMixed();
         setSubtitleIndicatorColor();
     }
 
     private void setViewOrUpdateNote() {
-        inputTitle.setText(alreadyAvailableNote.getTitle());
-        inputSubtitle.setText(alreadyAvailableNote.getSubtitle());
-        inputText.setText(alreadyAvailableNote.getNoteText());
-        textDateTime.setText(alreadyAvailableNote.getDateTime());
+        inputTitle.setText(availableNote.getTitle());
+        inputSubtitle.setText(availableNote.getSubtitle());
+        inputText.setText(availableNote.getNoteText());
+        textDateTime.setText(availableNote.getDateTime());
 
     }
 
-    private void saveNote() {
+    private void saveMood() {
         final String noteTitle = inputTitle.getText().toString().trim();
         final String noteSubtitle = inputSubtitle.getText().toString().trim();
         final String noteText = inputText.getText().toString().trim();
@@ -107,14 +107,14 @@ public class CreateNoteActivity extends AppCompatActivity {
         note.setSubtitle(noteSubtitle);
         note.setNoteText(noteText);
         note.setDateTime(dateTimeStr);
-        note.setColor(selectedNoteColor);
+        note.setColor(selectedMoodColor);
 
-        if (alreadyAvailableNote != null) {
-            note.setId(alreadyAvailableNote.getId());
+        if (availableNote != null) {
+            note.setId(availableNote.getId());
         }
 
         @SuppressLint("StaticFieldLeak")
-        class SaveNoteTask extends AsyncTask<Void, Void, Void> {
+        class SaveMoodTask extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
                 Database.getDatabase(getApplicationContext()).noteDao().insertNote(note);
@@ -131,10 +131,10 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         }
 
-        new SaveNoteTask().execute();
+        new SaveMoodTask().execute();
     }
 
-    private void initMiscellaneous() {
+    private void initMixed() {
         final LinearLayout layoutChangeColor = findViewById(R.id.layoutChangeColor);
         final BottomSheetBehavior<LinearLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutChangeColor);
         layoutChangeColor.findViewById(R.id.textChangeColor).setOnClickListener(v -> {
@@ -152,7 +152,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         final ImageView imageColor5 = layoutChangeColor.findViewById(R.id.imageColor5);
 
         layoutChangeColor.findViewById(R.id.viewColor1).setOnClickListener(v -> {
-            selectedNoteColor = "#FFC107";
+            selectedMoodColor = "#FFC107";
             imageColor1.setImageResource(R.drawable.ic_save);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
@@ -162,7 +162,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor2).setOnClickListener(v -> {
-            selectedNoteColor = "#2196F3";
+            selectedMoodColor = "#2196F3";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(R.drawable.ic_save);
             imageColor3.setImageResource(0);
@@ -172,7 +172,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor3).setOnClickListener(v -> {
-            selectedNoteColor = "#F62D1E";
+            selectedMoodColor = "#F62D1E";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(R.drawable.ic_save);
@@ -182,7 +182,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor4).setOnClickListener(v -> {
-            selectedNoteColor = "#673AB7";
+            selectedMoodColor = "#673AB7";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
@@ -192,7 +192,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         layoutChangeColor.findViewById(R.id.viewColor5).setOnClickListener(v -> {
-            selectedNoteColor = "#E91E63";
+            selectedMoodColor = "#E91E63";
             imageColor1.setImageResource(0);
             imageColor2.setImageResource(0);
             imageColor3.setImageResource(0);
@@ -201,8 +201,8 @@ public class CreateNoteActivity extends AppCompatActivity {
             setSubtitleIndicatorColor();
         });
 
-        if (alreadyAvailableNote != null) {
-            final String noteColorCode = alreadyAvailableNote.getColor();
+        if (availableNote != null) {
+            final String noteColorCode = availableNote.getColor();
             if (noteColorCode != null && !noteColorCode.trim().isEmpty()) {
                 switch (noteColorCode) {
                     case "#2196F3":
@@ -222,34 +222,34 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
 
 
-        if (alreadyAvailableNote != null) {
-            layoutChangeColor.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
-            layoutChangeColor.findViewById(R.id.layoutDeleteNote).setOnClickListener(v -> {
+        if (availableNote != null) {
+            layoutChangeColor.findViewById(R.id.layoutDeleteMood).setVisibility(View.VISIBLE);
+            layoutChangeColor.findViewById(R.id.layoutDeleteMood).setOnClickListener(v -> {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                showDeleteNoteDialog();
+                showDeleteMoodDialog();
             });
         }
     }
 
-    private void showDeleteNoteDialog() {
-        if (dialogDeleteNote == null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
+    private void showDeleteMoodDialog() {
+        if (dialogDeleteMood == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateMoodActivity.this);
             View view = LayoutInflater.from(this).inflate(
                     R.layout.layout_delete_note,
                     (ViewGroup) findViewById(R.id.layoutDeleteNoteContainer)
             );
             builder.setView(view);
-            dialogDeleteNote = builder.create();
-            if (dialogDeleteNote.getWindow() != null) {
-                dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            dialogDeleteMood = builder.create();
+            if (dialogDeleteMood.getWindow() != null) {
+                dialogDeleteMood.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
             view.findViewById(R.id.textDeleteNote).setOnClickListener(v -> {
                 @SuppressLint("StaticFieldLeak")
-                class DeleteNoteTask extends AsyncTask<Void, Void, Void> {
+                class DeleteMoodTask extends AsyncTask<Void, Void, Void> {
 
                     @Override
                     protected Void doInBackground(Void... voids) {
-                        Database.getDatabase(getApplicationContext()).noteDao().deleteNote(alreadyAvailableNote);
+                        Database.getDatabase(getApplicationContext()).noteDao().deleteNote(availableNote);
                         return null;
                     }
 
@@ -260,23 +260,23 @@ public class CreateNoteActivity extends AppCompatActivity {
                         intent.putExtra("isNoteDeleted", true);
                         setResult(RESULT_OK, intent);
 
-                        dialogDeleteNote.dismiss();
+                        dialogDeleteMood.dismiss();
                         finish();
                     }
                 }
 
-                new DeleteNoteTask().execute();
+                new DeleteMoodTask().execute();
             });
 
-            view.findViewById(R.id.textCancel).setOnClickListener(v -> dialogDeleteNote.dismiss());
+            view.findViewById(R.id.textCancel).setOnClickListener(v -> dialogDeleteMood.dismiss());
         }
 
-        dialogDeleteNote.show();
+        dialogDeleteMood.show();
     }
 
     private void setSubtitleIndicatorColor() {
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
-        gradientDrawable.setColor(Color.parseColor(selectedNoteColor));
+        gradientDrawable.setColor(Color.parseColor(selectedMoodColor));
     }
 
     @SuppressLint("QueryPermissionsNeeded")

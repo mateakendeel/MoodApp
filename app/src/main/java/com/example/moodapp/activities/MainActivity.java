@@ -18,15 +18,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.moodapp.R;
-import com.example.moodapp.adapters.NotesAdapter;
+import com.example.moodapp.adapters.MoodAdapter;
 import com.example.moodapp.database.Database;
 import com.example.moodapp.entities.Note;
-import com.example.moodapp.listeners.NotesListener;
+import com.example.moodapp.listeners.MoodsListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NotesListener {
+public class MainActivity extends AppCompatActivity implements MoodsListener {
 
     public static final int REQUEST_CODE_ADD_NOTE = 1;
     public static final int REQUEST_CODE_UPDATE_NOTE = 2;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private RecyclerView notesRecyclerView;
 
     private List<Note> noteList;
-    private NotesAdapter notesAdapter;
+    private MoodAdapter moodAdapter;
 
     private int noteClickedPosition = -1;
 
@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         noteList = new ArrayList<>();
-        notesAdapter = new NotesAdapter(noteList, this);
-        notesRecyclerView.setAdapter(notesAdapter);
+        moodAdapter = new MoodAdapter(noteList, this);
+        notesRecyclerView.setAdapter(moodAdapter);
 
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                notesAdapter.cancelTimer();
+                moodAdapter.cancelTimer();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (noteList.size() != 0) {
-                    notesAdapter.searchNotes(s.toString());
+                    moodAdapter.searchNotes(s.toString());
                 }
             }
         });
@@ -127,18 +127,18 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 super.onPostExecute(notes);
                 if (requestCode == REQUEST_CODE_SHOW_NOTES) {
                     noteList.addAll(notes);
-                    notesAdapter.notifyDataSetChanged();
+                    moodAdapter.notifyDataSetChanged();
                 } else if (requestCode == REQUEST_CODE_ADD_NOTE) {
                     noteList.add(0, notes.get(0));
-                    notesAdapter.notifyItemInserted(0);
+                    moodAdapter.notifyItemInserted(0);
                     notesRecyclerView.smoothScrollToPosition(0);
                 } else if (requestCode == REQUEST_CODE_UPDATE_NOTE) {
                     noteList.remove(noteClickedPosition);
                     if (isNoteDeleted) {
-                        notesAdapter.notifyItemRemoved(noteClickedPosition);
+                        moodAdapter.notifyItemRemoved(noteClickedPosition);
                     } else {
                         noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
-                        notesAdapter.notifyItemChanged(noteClickedPosition);
+                        moodAdapter.notifyItemChanged(noteClickedPosition);
                     }
                 }
             }

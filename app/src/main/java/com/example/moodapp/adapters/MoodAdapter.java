@@ -15,25 +15,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moodapp.R;
 import com.example.moodapp.entities.Note;
-import com.example.moodapp.listeners.NotesListener;
+import com.example.moodapp.listeners.MoodsListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
+public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.NoteViewHolder> {
 
     private List<Note> notes;
 
     private final List<Note> notesSource;
-    private NotesListener notesListener;
+    private MoodsListener moodsListener;
 
     private Timer timer;
 
-    public NotesAdapter(List<Note> notes, NotesListener notesListener) {
+    public MoodAdapter(List<Note> notes, MoodsListener moodsListener) {
         this.notes = notes;
-        this.notesListener = notesListener;
+        this.moodsListener = moodsListener;
         notesSource = notes;
     }
 
@@ -58,7 +58,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             public void onClick(View view) {
                 int adapterPosition = holder.getAdapterPosition();
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    notesListener.onClickedNote(notes.get(adapterPosition), adapterPosition);
+                    moodsListener.onClickedNote(notes.get(adapterPosition), adapterPosition);
                 }
             }
         });

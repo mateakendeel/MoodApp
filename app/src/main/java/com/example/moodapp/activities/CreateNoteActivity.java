@@ -46,12 +46,8 @@ public class CreateNoteActivity extends AppCompatActivity {
     private LinearLayout layoutWebURL;
 
     private String selectedNoteColor;
-    private String selectedImagePath;
-
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
-
-    private AlertDialog dialogAddURL;
     private AlertDialog dialogDeleteNote;
 
     private Note alreadyAvailableNote;
@@ -79,7 +75,6 @@ public class CreateNoteActivity extends AppCompatActivity {
         imageSave.setOnClickListener(v -> saveNote());
 
         selectedNoteColor = "#333333";
-        selectedImagePath = "";
 
         if (getIntent().getBooleanExtra("isViewOrUpdate", false)) {
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");

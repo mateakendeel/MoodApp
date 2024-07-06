@@ -61,7 +61,7 @@
         android:padding="@dimen/_8sdp"
         android:text="DELETE NOTE"
         android:textAllCaps="true"
-        android:textColor="@color/colorDelete"
+        android:textColor="@color/color_delete"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

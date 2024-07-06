@@ -7,26 +7,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background_change_color"
-    app:behavior_peekHeight="40dp"
-    app:layout_behavior="@string/bottom_sheet_behavior">
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_peekHeight="40dp">
 
     <TextView
         android:id="@+id/textChangeColor"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="Change Mood"
         android:textColor="@color/white"
+        android:layout_height="40dp"
         android:textSize="13sp"/>
 
     <LinearLayout
         android:id="@+id/layoutNoteColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <FrameLayout
 
@@ -36,17 +36,18 @@
 
             <View
                 android:id="@+id/viewColor1"
+                android:background="@drawable/background_note_color_1"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/background_note_color_1" />
+                 />
 
             <ImageView
                 android:id="@+id/imageColor1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_save"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:contentDescription="@string/app_name"
                 android:padding="10dp"
-                android:src="@drawable/ic_save"
                 />
 
         </FrameLayout>
@@ -59,15 +60,17 @@
 
             <View
                 android:id="@+id/viewColor2"
+                android:background="@drawable/background_note_color_2"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/background_note_color_2" />
+                 />
 
             <ImageView
                 android:id="@+id/imageColor2"
+                android:contentDescription="@string/app_name"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:contentDescription="@string/app_name"
+
                 android:padding="10dp"
                 />
 
@@ -81,15 +84,17 @@
 
             <View
                 android:id="@+id/viewColor3"
+                android:background="@drawable/background_note_color_3"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/background_note_color_3" />
+                 />
 
             <ImageView
                 android:id="@+id/imageColor3"
+                android:contentDescription="@string/app_name"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:contentDescription="@string/app_name"
+
                 android:padding="10dp"
                 />
 
@@ -103,15 +108,16 @@
 
             <View
                 android:id="@+id/viewColor4"
+                android:background="@drawable/background_note_color_4"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/background_note_color_4" />
+                 />
 
             <ImageView
                 android:id="@+id/imageColor4"
+                android:contentDescription="@string/app_name"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:contentDescription="@string/app_name"
                 android:padding="10dp"
                 />
 
@@ -125,15 +131,16 @@
 
             <View
                 android:id="@+id/viewColor5"
+                android:background="@drawable/background_note_color_5"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/background_note_color_5" />
+                 />
 
             <ImageView
                 android:id="@+id/imageColor5"
+                android:contentDescription="@string/app_name"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:contentDescription="@string/app_name"
                 android:padding="10dp"
                 />
 
@@ -141,11 +148,11 @@
 
         <TextView
             android:id="@+id/textPickColor"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:text="Pick mood"
-            android:textColor="@color/white"
             android:textSize="13sp"
             />
     </LinearLayout>
@@ -176,10 +183,10 @@
             android:id="@+id/textDeleteNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
             android:includeFontPadding="false"
             android:text="Delete Note"
             android:textColor="@color/color_delete"
+            android:layout_marginStart="@dimen/_10sdp"
             android:textSize="@dimen/_12ssp" />
 
     </LinearLayout>

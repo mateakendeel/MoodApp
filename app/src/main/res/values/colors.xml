@@ -9,25 +9,26 @@
     <!--    main colors-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="main_color">#201D1D</color>
-    <color name="main_color_dark">#2E2B2B</color>
+    <color name="main_color">#1E232E</color>
+    <color name="main_color_dark">#42454D</color>
 
     <!--    text colors-->
-    <color name="text">#7B7B7B</color>
+    <color name="text">#A4A4A4</color>
     <color name="text_subtitle">#CECECE</color>
 
     <!--    icon colors-->
-    <color name="accent">#00BCD4</color>
+    <color name="accent">#007FD4</color>
     <color name="icons">#A4A4A4</color>
     <color name="search_icon">#DBDBDB</color>
 
     <!--    note colors-->
-    <color name="default_note">#333333</color>
+    <color name="default_note">#FFC107</color>
     <color name="note_subtitle_text">#FAFAFA</color>
-    <color name="note_color2">#00BCD4</color>
-    <color name="note_color3">#4CAF50</color>
-    <color name="note_color4">#2196F3</color>
-    <color name="note_color5">#000000</color>
+    <color name="note_color2">#2196F3</color>
+    <color name="note_color3">#F62D1E</color>
+    <color name="note_color4">#673AB7</color>
+    <color name="note_color5">#E91E63</color>
+    <color name="color_delete">#F40404</color>
 
     <!--    background colors-->
     <color name="quick_actions_background">#2F2D2E</color>
@@ -37,12 +38,6 @@
 
 
 
-
-
-
-
-
-    <color name="color_delete">#4CAF50</color>
 
 
 

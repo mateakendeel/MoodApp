@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/main_color"
     tools:context=".activities.MainActivity">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginEnd="12dp"
         android:includeFontPadding="false"
         android:text="Mood App"
-        android:textColor="@color/color_white"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,8 +52,8 @@
             android:importantForAutofill="no"
             android:includeFontPadding="false"
             android:inputType="text"
-            android:textColor="@color/color_white"
-            android:textColorHint="@color/colorTextHint"
+            android:textColor="@color/white"
+            android:textColorHint="@color/text"
             android:textSize="13sp"
             />
     </LinearLayout>
@@ -75,7 +75,7 @@
         android:id="@+id/layoutQuickActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorQuickActionsBackground"
+        android:background="@color/quick_actions_background"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="15dp"

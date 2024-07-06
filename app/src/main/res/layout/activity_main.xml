@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:includeFontPadding="false"
-        android:text="@string/my_notes"
+        android:text="Mood App"
         android:textColor="@color/color_white"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent" />
@@ -100,7 +100,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageAddNotMain"
+        android:id="@+id/imageAddNoteMain"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="30dp"

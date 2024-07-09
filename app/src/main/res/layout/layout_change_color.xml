@@ -52,7 +52,7 @@
                 android:id="@+id/viewColor1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/background_mood_color_1" />
+                android:background="@drawable/background_note_color_1" />
 
             <ImageView
                 android:id="@+id/imageColor1"
@@ -84,7 +84,7 @@
                 android:id="@+id/viewColor2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/background_mood_color_2" />
+                android:background="@drawable/background_note_color_2" />
 
             <ImageView
                 android:id="@+id/imageColor2"
@@ -115,7 +115,7 @@
                 android:id="@+id/viewColor3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/background_mood_color_3" />
+                android:background="@drawable/background_note_color_3" />
 
             <ImageView
                 android:id="@+id/imageColor3"
@@ -146,7 +146,7 @@
                 android:id="@+id/viewColor4"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/background_mood_color_4" />
+                android:background="@drawable/background_note_color_4" />
 
             <ImageView
                 android:id="@+id/imageColor4"
@@ -177,7 +177,7 @@
                 android:id="@+id/viewColor5"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/background_mood_color_5" />
+                android:background="@drawable/background_note_color_5" />
 
             <ImageView
                 android:id="@+id/imageColor5"

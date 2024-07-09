@@ -235,7 +235,7 @@ public class CreateMoodActivity extends AppCompatActivity {
         if (dialogDeleteMood == null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(CreateMoodActivity.this);
             View view = LayoutInflater.from(this).inflate(
-                    R.layout.layout_delete_note,
+                    R.layout.layout_delete_mood,
                     (ViewGroup) findViewById(R.id.layoutDeleteNoteContainer)
             );
             builder.setView(view);

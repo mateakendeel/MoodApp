@@ -6,9 +6,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.moodapp.dao.MoodDao;
-import com.example.moodapp.entities.Note;
+import com.example.moodapp.entities.Mood;
 
-@androidx.room.Database(entities = Note.class, version = 1, exportSchema = false)
+@androidx.room.Database(entities = Mood.class, version = 1, exportSchema = false)
 public abstract class Database extends RoomDatabase {
 
     private static Database database;
@@ -24,5 +24,5 @@ public abstract class Database extends RoomDatabase {
         return database;
     }
 
-    public abstract MoodDao noteDao();
+    public abstract MoodDao MoodDao();
 }

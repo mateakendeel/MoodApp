@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity(tableName = "notes")
-public class Note implements Serializable {
+public class Mood implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -24,14 +24,9 @@ public class Note implements Serializable {
     @ColumnInfo(name = "note_text")
     private String noteText;
 
-    @ColumnInfo(name = "image_path")
-    private String imagePath;
-
     @ColumnInfo(name = "color")
     private String color;
 
-    @ColumnInfo(name = "web_link")
-    private String webLink;
 
 
     public int getId() {
@@ -74,14 +69,6 @@ public class Note implements Serializable {
         this.noteText = noteText;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
     public String getColor() {
         return color;
     }
@@ -90,13 +77,6 @@ public class Note implements Serializable {
         this.color = color;
     }
 
-    public String getWebLink() {
-        return webLink;
-    }
-
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
-    }
 
     @NonNull
     @Override

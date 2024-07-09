@@ -6,18 +6,18 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.moodapp.entities.Note;
+import com.example.moodapp.entities.Mood;
 
 import java.util.List;
 
 @Dao
 public interface MoodDao {
     @Query("SELECT * FROM notes ORDER BY id DESC")
-    List<Note> getAllNotes();
+    List<Mood> getAllNotes();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertNote(Note note);
+    void insertNote(Mood mood);
 
     @Delete
-    void deleteNote(Note note);
+    void deleteNote(Mood mood);
 }

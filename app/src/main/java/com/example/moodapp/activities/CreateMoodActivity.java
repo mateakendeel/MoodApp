@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 import com.example.moodapp.R;
 import com.example.moodapp.database.Database;
-import com.example.moodapp.entities.Note;
+import com.example.moodapp.entities.Mood;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.text.SimpleDateFormat;
@@ -45,7 +45,7 @@ public class CreateMoodActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
     private AlertDialog dialogDeleteMood;
 
-    private Note availableNote;
+    private Mood availableMood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class CreateMoodActivity extends AppCompatActivity {
         selectedMoodColor = "#343841";
 
         if (getIntent().getBooleanExtra("isViewOrUpdate", false)) {
-            availableNote = (Note) getIntent().getSerializableExtra("note");
+            availableMood = (Mood) getIntent().getSerializableExtra("note");
             setViewOrUpdateNote();
         }
 
@@ -81,10 +81,10 @@ public class CreateMoodActivity extends AppCompatActivity {
     }
 
     private void setViewOrUpdateNote() {
-        inputTitle.setText(availableNote.getTitle());
-        inputSubtitle.setText(availableNote.getSubtitle());
-        inputText.setText(availableNote.getNoteText());
-        textDateTime.setText(availableNote.getDateTime());
+        inputTitle.setText(availableMood.getTitle());
+        inputSubtitle.setText(availableMood.getSubtitle());
+        inputText.setText(availableMood.getNoteText());
+        textDateTime.setText(availableMood.getDateTime());
 
     }
 
@@ -95,29 +95,29 @@ public class CreateMoodActivity extends AppCompatActivity {
         final String dateTimeStr = textDateTime.getText().toString().trim();
 
         if (noteTitle.isEmpty()) {
-            Toast.makeText(this, "Note title can't be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mood title can't be empty!", Toast.LENGTH_SHORT).show();
             return;
         } else if (noteSubtitle.isEmpty() && noteText.isEmpty()) {
-            Toast.makeText(this, "Note can't be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mood can't be empty!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        final Note note = new Note();
-        note.setTitle(noteTitle);
-        note.setSubtitle(noteSubtitle);
-        note.setNoteText(noteText);
-        note.setDateTime(dateTimeStr);
-        note.setColor(selectedMoodColor);
+        final Mood mood = new Mood();
+        mood.setTitle(noteTitle);
+        mood.setSubtitle(noteSubtitle);
+        mood.setNoteText(noteText);
+        mood.setDateTime(dateTimeStr);
+        mood.setColor(selectedMoodColor);
 
-        if (availableNote != null) {
-            note.setId(availableNote.getId());
+        if (availableMood != null) {
+            mood.setId(availableMood.getId());
         }
 
         @SuppressLint("StaticFieldLeak")
         class SaveMoodTask extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                Database.getDatabase(getApplicationContext()).noteDao().insertNote(note);
+                Database.getDatabase(getApplicationContext()).MoodDao().insertNote(mood);
                 return null;
             }
 
@@ -201,8 +201,8 @@ public class CreateMoodActivity extends AppCompatActivity {
             setSubtitleIndicatorColor();
         });
 
-        if (availableNote != null) {
-            final String noteColorCode = availableNote.getColor();
+        if (availableMood != null) {
+            final String noteColorCode = availableMood.getColor();
             if (noteColorCode != null && !noteColorCode.trim().isEmpty()) {
                 switch (noteColorCode) {
                     case "#2196F3":
@@ -222,7 +222,7 @@ public class CreateMoodActivity extends AppCompatActivity {
         }
 
 
-        if (availableNote != null) {
+        if (availableMood != null) {
             layoutChangeColor.findViewById(R.id.layoutDeleteMood).setVisibility(View.VISIBLE);
             layoutChangeColor.findViewById(R.id.layoutDeleteMood).setOnClickListener(v -> {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
@@ -249,7 +249,7 @@ public class CreateMoodActivity extends AppCompatActivity {
 
                     @Override
                     protected Void doInBackground(Void... voids) {
-                        Database.getDatabase(getApplicationContext()).noteDao().deleteNote(availableNote);
+                        Database.getDatabase(getApplicationContext()).MoodDao().deleteNote(availableMood);
                         return null;
                     }
 

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moodapp.R;
-import com.example.moodapp.entities.Note;
+import com.example.moodapp.entities.Mood;
 import com.example.moodapp.listeners.MoodsListener;
 
 import java.util.ArrayList;
@@ -22,25 +22,25 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.NoteViewHolder> {
+public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder> {
 
-    private List<Note> notes;
+    private List<Mood> moods;
 
-    private final List<Note> notesSource;
+    private final List<Mood> moodsSource;
     private MoodsListener moodsListener;
 
     private Timer timer;
 
-    public MoodAdapter(List<Note> notes, MoodsListener moodsListener) {
-        this.notes = notes;
+    public MoodAdapter(List<Mood> moods, MoodsListener moodsListener) {
+        this.moods = moods;
         this.moodsListener = moodsListener;
-        notesSource = notes;
+        moodsSource = moods;
     }
 
     @NonNull
     @Override
-    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NoteViewHolder(
+    public MoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MoodViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.item_container_mood,
                         parent,
@@ -50,15 +50,15 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.NoteViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MoodViewHolder holder, final int position) {
 
-        holder.setNote(notes.get(position));
-        holder.layoutNote.setOnClickListener(new View.OnClickListener() {
+        holder.setMood(moods.get(position));
+        holder.layoutMood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int adapterPosition = holder.getAdapterPosition();
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    moodsListener.onClickedNote(notes.get(adapterPosition), adapterPosition);
+                    moodsListener.onClickedNote(moods.get(adapterPosition), adapterPosition);
                 }
             }
         });
@@ -68,7 +68,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.NoteViewHolder
 
     @Override
     public int getItemCount() {
-        return notes.size();
+        return moods.size();
     }
 
     @Override
@@ -76,53 +76,53 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.NoteViewHolder
         return position;
     }
 
-    static class NoteViewHolder extends RecyclerView.ViewHolder{
+    static class MoodViewHolder extends RecyclerView.ViewHolder{
 
         TextView textTitle, textSubtitle, textDateTime;
-        LinearLayout layoutNote;
-        NoteViewHolder(@NonNull View itemView) {
+        LinearLayout layoutMood;
+        MoodViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textSubtitle = itemView.findViewById(R.id.textSubtitle);
             textDateTime = itemView.findViewById(R.id.textDateTime);
-            layoutNote = itemView.findViewById(R.id.layoutNote);
+            layoutMood = itemView.findViewById(R.id.layoutMood);
         }
 
-        void setNote(Note note){
-            textTitle.setText(note.getTitle());
-            if(note.getSubtitle().trim().isEmpty()){
+        void setMood(Mood mood){
+            textTitle.setText(mood.getTitle());
+            if(mood.getSubtitle().trim().isEmpty()){
                 textSubtitle.setVisibility(View.GONE);
             }
             else{
-                textSubtitle.setText(note.getSubtitle());
+                textSubtitle.setText(mood.getSubtitle());
             }
-            textDateTime.setText(note.getDateTime());
-            GradientDrawable gradientDrawable = (GradientDrawable) layoutNote.getBackground();
-            if(note.getColor() != null) {
-                gradientDrawable.setColor(Color.parseColor(note.getColor()));
+            textDateTime.setText(mood.getDateTime());
+            GradientDrawable gradientDrawable = (GradientDrawable) layoutMood.getBackground();
+            if(mood.getColor() != null) {
+                gradientDrawable.setColor(Color.parseColor(mood.getColor()));
             }else {
                 gradientDrawable.setColor(Color.parseColor("#333333"));
             }
         }
     }
 
-    public void searchNotes(final String searchKeyword) {
+    public void searchMoods(final String searchKeyword) {
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 if (searchKeyword.trim().isEmpty()) {
-                    notes = notesSource;
+                    moods = moodsSource;
                 } else {
-                    ArrayList<Note> temp = new ArrayList<>();
-                    for (Note note : notesSource) {
-                        if (note.getTitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
-                                note.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
-                                note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())) {
-                            temp.add(note);
+                    ArrayList<Mood> temp = new ArrayList<>();
+                    for (Mood mood : moodsSource) {
+                        if (mood.getTitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
+                                mood.getSubtitle().toLowerCase().contains(searchKeyword.toLowerCase()) ||
+                                mood.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())) {
+                            temp.add(mood);
                         }
                     }
-                    notes = temp;
+                    moods = temp;
                 }
 
                 new Handler(Looper.getMainLooper()).post(() -> notifyDataSetChanged());

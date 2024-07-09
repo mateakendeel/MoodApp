@@ -7,7 +7,7 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.moodapp.database.Database;
-import com.example.moodapp.entities.Note;
+import com.example.moodapp.entities.Mood;
 
 import org.junit.After;
 import org.junit.Before;
@@ -35,44 +35,44 @@ public class DatabaseTest {
 
     @Test
     public void testInsertNote() throws Exception {
-        Note note = new Note();
-        note.setTitle("Test Title");
-        note.setDateTime("2024-06-05 10:00:00");
-        note.setSubtitle("Test Subtitle");
-        note.setNoteText("Test Note Text");
+        Mood mood = new Mood();
+        mood.setTitle("Test Title");
+        mood.setDateTime("2024-06-05 10:00:00");
+        mood.setSubtitle("Test Subtitle");
+        mood.setNoteText("Test Mood Text");
 
-        database.noteDao().insertNote(note);
-        Note dbNote = database.noteDao().getAllNotes().get(0);
+        database.MoodDao().insertNote(mood);
+        Mood dbMood = database.MoodDao().getAllNotes().get(0);
 
-        assertEquals(dbNote.getTitle(), "Test Title");
+        assertEquals(dbMood.getTitle(), "Test Title");
     }
 
     @Test
     public void testNoteDateTime() throws Exception {
-        Note note = new Note();
-        note.setTitle("Test Title");
-        note.setDateTime("2024-06-05 10:00:00");
-        note.setSubtitle("Test Subtitle");
-        note.setNoteText("Test Note Text");
+        Mood mood = new Mood();
+        mood.setTitle("Test Title");
+        mood.setDateTime("2024-06-05 10:00:00");
+        mood.setSubtitle("Test Subtitle");
+        mood.setNoteText("Test Mood Text");
 
-        database.noteDao().insertNote(note);
-        Note dbNote = database.noteDao().getAllNotes().get(0);
+        database.MoodDao().insertNote(mood);
+        Mood dbMood = database.MoodDao().getAllNotes().get(0);
 
-        assertEquals(dbNote.getDateTime(), "2024-06-05 10:00:00");
+        assertEquals(dbMood.getDateTime(), "2024-06-05 10:00:00");
     }
 
     @Test
     public void testNoteSubtitle() throws Exception {
-        Note note = new Note();
-        note.setTitle("Test Title");
-        note.setDateTime("2024-06-05 10:00:00");
-        note.setSubtitle("Test Subtitle");
-        note.setNoteText("Test Note Text");
+        Mood mood = new Mood();
+        mood.setTitle("Test Title");
+        mood.setDateTime("2024-06-05 10:00:00");
+        mood.setSubtitle("Test Subtitle");
+        mood.setNoteText("Test Mood Text");
 
-        database.noteDao().insertNote(note);
-        Note dbNote = database.noteDao().getAllNotes().get(0);
+        database.MoodDao().insertNote(mood);
+        Mood dbMood = database.MoodDao().getAllNotes().get(0);
 
-        assertEquals(dbNote.getSubtitle(), "Test Subtitle");
+        assertEquals(dbMood.getSubtitle(), "Test Subtitle");
     }
 
 }

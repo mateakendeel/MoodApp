@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import com.example.moodapp.R;
 import com.example.moodapp.adapters.MoodAdapter;
 import com.example.moodapp.database.Database;
-import com.example.moodapp.entities.Note;
+import com.example.moodapp.entities.Mood;
 import com.example.moodapp.listeners.MoodsListener;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
 
     private RecyclerView notesRecyclerView;
 
-    private List<Note> noteList;
+    private List<Mood> moodList;
     private MoodAdapter moodAdapter;
 
     private int noteClickedPosition = -1;
@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         notesRecyclerView.setLayoutManager(
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-        noteList = new ArrayList<>();
-        moodAdapter = new MoodAdapter(noteList, this);
+        moodList = new ArrayList<>();
+        moodAdapter = new MoodAdapter(moodList, this);
         notesRecyclerView.setAdapter(moodAdapter);
 
-        getNotes(REQUEST_CODE_SHOW_MOOD, false);
+        getMoods(REQUEST_CODE_SHOW_MOOD, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (noteList.size() != 0) {
-                    moodAdapter.searchNotes(s.toString());
+                if (moodList.size() != 0) {
+                    moodAdapter.searchMoods(s.toString());
                 }
             }
         });
@@ -103,58 +103,58 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
     }
 
     @Override
-    public void onClickedNote(Note note, int position) {
+    public void onClickedNote(Mood mood, int position) {
         noteClickedPosition = position;
         Intent intent = new Intent(getApplicationContext(), CreateMoodActivity.class);
         intent.putExtra("isViewOrUpdate", true);
-        intent.putExtra("note", note);
+        intent.putExtra("mood", mood);
         startActivityForResult(intent, REQUEST_CODE_UPDATE_MOOD);
     }
 
-    private void getNotes(final int requestCode, final boolean isNoteDeleted) {
+    private void getMoods(final int requestCode, final boolean isNoteDeleted) {
 
         @SuppressLint("StaticFieldLeak")
-        class GetNoteTask extends AsyncTask<Void, Void, List<Note>> {
+        class GetMoodTask extends AsyncTask<Void, Void, List<Mood>> {
 
             @Override
-            protected List<Note> doInBackground(Void... voids) {
+            protected List<Mood> doInBackground(Void... voids) {
                 return Database.getDatabase(getApplicationContext())
-                        .noteDao().getAllNotes();
+                        .MoodDao().getAllNotes();
             }
 
             @Override
-            protected void onPostExecute(List<Note> notes) {
-                super.onPostExecute(notes);
+            protected void onPostExecute(List<Mood> moods) {
+                super.onPostExecute(moods);
                 if (requestCode == REQUEST_CODE_SHOW_MOOD) {
-                    noteList.addAll(notes);
+                    moodList.addAll(moods);
                     moodAdapter.notifyDataSetChanged();
                 } else if (requestCode == REQUEST_CODE_ADD_MOOD) {
-                    noteList.add(0, notes.get(0));
+                    moodList.add(0, moods.get(0));
                     moodAdapter.notifyItemInserted(0);
                     notesRecyclerView.smoothScrollToPosition(0);
                 } else if (requestCode == REQUEST_CODE_UPDATE_MOOD) {
-                    noteList.remove(noteClickedPosition);
+                    moodList.remove(noteClickedPosition);
                     if (isNoteDeleted) {
                         moodAdapter.notifyItemRemoved(noteClickedPosition);
                     } else {
-                        noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
+                        moodList.add(noteClickedPosition, moods.get(noteClickedPosition));
                         moodAdapter.notifyItemChanged(noteClickedPosition);
                     }
                 }
             }
         }
 
-        new GetNoteTask().execute();
+        new GetMoodTask().execute();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_ADD_MOOD && resultCode == RESULT_OK) {
-            getNotes(REQUEST_CODE_ADD_MOOD, false);
+            getMoods(REQUEST_CODE_ADD_MOOD, false);
         } else if (requestCode == REQUEST_CODE_UPDATE_MOOD && resultCode == RESULT_OK) {
             if (data != null) {
-                getNotes(REQUEST_CODE_UPDATE_MOOD, data.getBooleanExtra("isNoteDeleted", false));
+                getMoods(REQUEST_CODE_UPDATE_MOOD, data.getBooleanExtra("isNoteDeleted", false));
             }
         }
     }

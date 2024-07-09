@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import com.example.moodapp.R;
 import com.example.moodapp.adapters.MoodAdapter;
 import com.example.moodapp.database.Database;
-import com.example.moodapp.entities.Mood;
+import com.example.moodapp.entities.Note;
 import com.example.moodapp.listeners.MoodsListener;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
 
     private RecyclerView notesRecyclerView;
 
-    private List<Mood> moodList;
+    private List<Note> noteList;
     private MoodAdapter moodAdapter;
 
     private int noteClickedPosition = -1;
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         notesRecyclerView.setLayoutManager(
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-        moodList = new ArrayList<>();
-        moodAdapter = new MoodAdapter(moodList, this);
+        noteList = new ArrayList<>();
+        moodAdapter = new MoodAdapter(noteList, this);
         notesRecyclerView.setAdapter(moodAdapter);
 
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (moodList.size() != 0) {
-                    moodAdapter.searchMoods(s.toString());
+                if (noteList.size() != 0) {
+                    moodAdapter.searchNotes(s.toString());
                 }
             }
         });
@@ -103,44 +103,26 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
     }
 
     @Override
-    public void onClickedNote(Mood mood, int position) {
+    public void onClickedNote(Note note, int position) {
         noteClickedPosition = position;
         Intent intent = new Intent(getApplicationContext(), CreateMoodActivity.class);
         intent.putExtra("isViewOrUpdate", true);
-<<<<<<< HEAD
-        intent.putExtra("mood", mood);
-        startActivityForResult(intent, REQUEST_CODE_UPDATE_MOOD);
-=======
         intent.putExtra("note", note);
         startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);
->>>>>>> parent of e47143d (main)
     }
 
     private void getNotes(final int requestCode, final boolean isNoteDeleted) {
 
         @SuppressLint("StaticFieldLeak")
-        class GetMoodTask extends AsyncTask<Void, Void, List<Mood>> {
+        class GetNoteTask extends AsyncTask<Void, Void, List<Note>> {
 
             @Override
-            protected List<Mood> doInBackground(Void... voids) {
+            protected List<Note> doInBackground(Void... voids) {
                 return Database.getDatabase(getApplicationContext())
-                        .MoodDao().getAllNotes();
+                        .noteDao().getAllNotes();
             }
 
             @Override
-<<<<<<< HEAD
-            protected void onPostExecute(List<Mood> moods) {
-                super.onPostExecute(moods);
-                if (requestCode == REQUEST_CODE_SHOW_MOOD) {
-                    moodList.addAll(moods);
-                    moodAdapter.notifyDataSetChanged();
-                } else if (requestCode == REQUEST_CODE_ADD_MOOD) {
-                    moodList.add(0, moods.get(0));
-                    moodAdapter.notifyItemInserted(0);
-                    notesRecyclerView.smoothScrollToPosition(0);
-                } else if (requestCode == REQUEST_CODE_UPDATE_MOOD) {
-                    moodList.remove(noteClickedPosition);
-=======
             protected void onPostExecute(List<Note> notes) {
                 super.onPostExecute(notes);
                 if (requestCode == REQUEST_CODE_SHOW_NOTES) {
@@ -152,18 +134,17 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
                     notesRecyclerView.smoothScrollToPosition(0);
                 } else if (requestCode == REQUEST_CODE_UPDATE_NOTE) {
                     noteList.remove(noteClickedPosition);
->>>>>>> parent of e47143d (main)
                     if (isNoteDeleted) {
                         moodAdapter.notifyItemRemoved(noteClickedPosition);
                     } else {
-                        moodList.add(noteClickedPosition, moods.get(noteClickedPosition));
+                        noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
                         moodAdapter.notifyItemChanged(noteClickedPosition);
                     }
                 }
             }
         }
 
-        new GetMoodTask().execute();
+        new GetNoteTask().execute();
     }
 
     @Override

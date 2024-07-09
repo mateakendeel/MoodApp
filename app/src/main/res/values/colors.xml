@@ -22,7 +22,7 @@
     <color name="icons">#A4A4A4</color>
     <color name="search_icon">#DBDBDB</color>
 
-    <!--    mood colors-->
+    <!--    note colors-->
     <color name="default_note">#FFC107</color>
     <color name="note_subtitle_text">#FAFAFA</color>
     <color name="note_color2">#2196F3</color>

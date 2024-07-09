@@ -32,7 +32,7 @@
           app:layout_constraintTop_toTopOf="parent"
           />
       <ImageView
-        android:id="@+id/imageSaveNote"
+          android:id="@+id/imageSaveNote"
           android:contentDescription="@string/app_name"
           android:layout_marginEnd="12dp"
           android:layout_width="25dp"
@@ -43,9 +43,9 @@
           android:src="@drawable/ic_save"
           app:layout_constraintBottom_toBottomOf="@id/imageArrowBack"
           app:layout_constraintTop_toTopOf="@id/imageArrowBack"
-        />
+          />
       <EditText
-        android:id="@+id/inputTittleName"
+          android:id="@+id/inputTittleName"
           android:hint="Title"
           android:layout_width="match_parent"
           android:layout_height="55dp"
@@ -62,17 +62,17 @@
           android:inputType="text"
           app:layout_constraintTop_toBottomOf="@id/imageArrowBack"
           />
-        <TextView
-            android:layout_height="wrap_content"
-            android:textColor="@color/icons"
-            android:id="@+id/textDateTime"
-            android:layout_width="0dp"
-            android:includeFontPadding="false"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@id/inputTittleName"
-            app:layout_constraintStart_toStartOf="@id/inputTittleName"
-            app:layout_constraintTop_toBottomOf="@id/inputTittleName"
-            />
+      <TextView
+          android:layout_height="wrap_content"
+          android:textColor="@color/icons"
+          android:id="@+id/textDateTime"
+          android:layout_width="0dp"
+          android:includeFontPadding="false"
+          android:textSize="10sp"
+          app:layout_constraintEnd_toEndOf="@id/inputTittleName"
+          app:layout_constraintStart_toStartOf="@id/inputTittleName"
+          app:layout_constraintTop_toBottomOf="@id/inputTittleName"
+          />
       <EditText
           android:id="@+id/inputSubtitle"
           android:layout_width="0dp"
@@ -95,7 +95,7 @@
           app:layout_constraintTop_toBottomOf="@id/textDateTime"
           />
       <View
-        android:id="@+id/viewSubtitleIndicator"
+          android:id="@+id/viewSubtitleIndicator"
           android:layout_width="5dp"
           android:layout_height="0dp"
           android:layout_marginStart="12dp"
@@ -131,4 +131,4 @@
 
   <include layout="@layout/layout_change_color"/>
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

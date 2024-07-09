@@ -1,8 +1,8 @@
 package com.example.moodapp.listeners;
 
-import com.example.moodapp.entities.Mood;
+import com.example.moodapp.entities.Note;
 
 public interface MoodsListener {
-    void onClickedNote(Mood mood, int position);
+    void onClickedNote(Note note, int position);
 
 }

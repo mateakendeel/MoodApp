@@ -50,7 +50,7 @@ public class CreateMoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_note);
+        setContentView(R.layout.activity_create_mood);
 
         ImageView imageBack = findViewById(R.id.imageArrowBack);
         imageBack.setOnClickListener(v -> onBackPressed());
@@ -243,7 +243,7 @@ public class CreateMoodActivity extends AppCompatActivity {
             if (dialogDeleteMood.getWindow() != null) {
                 dialogDeleteMood.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
-            view.findViewById(R.id.textDeleteNote).setOnClickListener(v -> {
+            view.findViewById(R.id.textDeleteMood).setOnClickListener(v -> {
                 @SuppressLint("StaticFieldLeak")
                 class DeleteMoodTask extends AsyncTask<Void, Void, Void> {
 

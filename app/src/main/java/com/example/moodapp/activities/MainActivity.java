@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         moodAdapter = new MoodAdapter(moodList, this);
         notesRecyclerView.setAdapter(moodAdapter);
 
-        getMoods(REQUEST_CODE_SHOW_MOOD, false);
+        getNotes(REQUEST_CODE_SHOW_MOOD, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         startActivityForResult(intent, REQUEST_CODE_UPDATE_MOOD);
     }
 
-    private void getMoods(final int requestCode, final boolean isNoteDeleted) {
+    private void getNotes(final int requestCode, final boolean isNoteDeleted) {
 
         @SuppressLint("StaticFieldLeak")
         class GetMoodTask extends AsyncTask<Void, Void, List<Mood>> {
@@ -151,10 +151,10 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_ADD_MOOD && resultCode == RESULT_OK) {
-            getMoods(REQUEST_CODE_ADD_MOOD, false);
+            getNotes(REQUEST_CODE_ADD_MOOD, false);
         } else if (requestCode == REQUEST_CODE_UPDATE_MOOD && resultCode == RESULT_OK) {
             if (data != null) {
-                getMoods(REQUEST_CODE_UPDATE_MOOD, data.getBooleanExtra("isNoteDeleted", false));
+                getNotes(REQUEST_CODE_UPDATE_MOOD, data.getBooleanExtra("isNoteDeleted", false));
             }
         }
     }

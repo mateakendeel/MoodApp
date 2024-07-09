@@ -11,6 +11,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#1E232E</color>
     <color name="main_color_dark">#343841</color>
+    <color name="main_color_light">#444B59</color>
 
     <!--    text colors-->
     <color name="text">#A4A4A4</color>

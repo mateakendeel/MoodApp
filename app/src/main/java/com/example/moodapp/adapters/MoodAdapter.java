@@ -42,7 +42,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.NoteViewHolder
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new NoteViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.item_container_note,
+                        R.layout.item_container_mood,
                         parent,
                         false
                 )

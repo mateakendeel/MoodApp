@@ -28,10 +28,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MoodsListener {
 
-    public static final int REQUEST_CODE_ADD_NOTE = 1;
-    public static final int REQUEST_CODE_UPDATE_NOTE = 2;
+    public static final int REQUEST_CODE_ADD_MOOD = 1;
+    public static final int REQUEST_CODE_UPDATE_MOOD = 2;
 
-    public static final int REQUEST_CODE_SHOW_NOTES = 3;
+    public static final int REQUEST_CODE_SHOW_MOOD = 3;
 
     public static final int REQUEST_CODE_STORAGE_PERMISSION = 5;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
 
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(v -> startActivityForResult(
-                new Intent(getApplicationContext(), CreateMoodActivity.class), REQUEST_CODE_ADD_NOTE)
+                new Intent(getApplicationContext(), CreateMoodActivity.class), REQUEST_CODE_ADD_MOOD)
         );
 
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         moodAdapter = new MoodAdapter(noteList, this);
         notesRecyclerView.setAdapter(moodAdapter);
 
-        getNotes(REQUEST_CODE_SHOW_NOTES, false);
+        getNotes(REQUEST_CODE_SHOW_MOOD, false);
 
         EditText inputSearch = findViewById(R.id.inputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         });
 
         findViewById(R.id.imageAddNote).setOnClickListener(v -> startActivityForResult(
-                new Intent(getApplicationContext(), CreateMoodActivity.class), REQUEST_CODE_ADD_NOTE));
+                new Intent(getApplicationContext(), CreateMoodActivity.class), REQUEST_CODE_ADD_MOOD));
     }
 
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
         Intent intent = new Intent(getApplicationContext(), CreateMoodActivity.class);
         intent.putExtra("isViewOrUpdate", true);
         intent.putExtra("note", note);
-        startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);
+        startActivityForResult(intent, REQUEST_CODE_UPDATE_MOOD);
     }
 
     private void getNotes(final int requestCode, final boolean isNoteDeleted) {
@@ -125,14 +125,14 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
             @Override
             protected void onPostExecute(List<Note> notes) {
                 super.onPostExecute(notes);
-                if (requestCode == REQUEST_CODE_SHOW_NOTES) {
+                if (requestCode == REQUEST_CODE_SHOW_MOOD) {
                     noteList.addAll(notes);
                     moodAdapter.notifyDataSetChanged();
-                } else if (requestCode == REQUEST_CODE_ADD_NOTE) {
+                } else if (requestCode == REQUEST_CODE_ADD_MOOD) {
                     noteList.add(0, notes.get(0));
                     moodAdapter.notifyItemInserted(0);
                     notesRecyclerView.smoothScrollToPosition(0);
-                } else if (requestCode == REQUEST_CODE_UPDATE_NOTE) {
+                } else if (requestCode == REQUEST_CODE_UPDATE_MOOD) {
                     noteList.remove(noteClickedPosition);
                     if (isNoteDeleted) {
                         moodAdapter.notifyItemRemoved(noteClickedPosition);
@@ -150,11 +150,11 @@ public class MainActivity extends AppCompatActivity implements MoodsListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK) {
-            getNotes(REQUEST_CODE_ADD_NOTE, false);
-        } else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE_ADD_MOOD && resultCode == RESULT_OK) {
+            getNotes(REQUEST_CODE_ADD_MOOD, false);
+        } else if (requestCode == REQUEST_CODE_UPDATE_MOOD && resultCode == RESULT_OK) {
             if (data != null) {
-                getNotes(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted", false));
+                getNotes(REQUEST_CODE_UPDATE_MOOD, data.getBooleanExtra("isNoteDeleted", false));
             }
         }
     }

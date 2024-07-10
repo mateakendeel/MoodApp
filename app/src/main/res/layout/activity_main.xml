@@ -103,8 +103,6 @@
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toTopOf="@id/layoutQuickActions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/layoutQuickActions"
-
-        />
+        app:layout_constraintTop_toTopOf="@id/layoutQuickActions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

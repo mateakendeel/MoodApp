@@ -19,6 +19,7 @@
 
     <!--    icon colors-->
     <color name="accent">#334CD3</color>
+    <color name="accent_pressed">#4F6AF8</color>
     <color name="icons">#A4A4A4</color>
     <color name="search_icon">#DBDBDB</color>
 

@@ -86,6 +86,9 @@ public class CreateMoodActivity extends AppCompatActivity {
         inputText.setText(availableNote.getNoteText());
         textDateTime.setText(availableNote.getDateTime());
 
+
+        selectedMoodColor = availableNote.getColor();
+        setSubtitleIndicatorColor();
     }
 
     private void saveMood() {
@@ -153,58 +156,42 @@ public class CreateMoodActivity extends AppCompatActivity {
 
         layoutChangeColor.findViewById(R.id.viewColor1).setOnClickListener(v -> {
             selectedMoodColor = "#FFC107";
-            imageColor1.setImageResource(R.drawable.ic_save);
-            imageColor2.setImageResource(0);
-            imageColor3.setImageResource(0);
-            imageColor4.setImageResource(0);
-            imageColor5.setImageResource(0);
+            updateSelectedMoodColor(imageColor1, imageColor2, imageColor3, imageColor4, imageColor5);
             setSubtitleIndicatorColor();
         });
 
         layoutChangeColor.findViewById(R.id.viewColor2).setOnClickListener(v -> {
             selectedMoodColor = "#2196F3";
-            imageColor1.setImageResource(0);
-            imageColor2.setImageResource(R.drawable.ic_save);
-            imageColor3.setImageResource(0);
-            imageColor4.setImageResource(0);
-            imageColor5.setImageResource(0);
+            updateSelectedMoodColor(imageColor2, imageColor1, imageColor3, imageColor4, imageColor5);
             setSubtitleIndicatorColor();
         });
 
         layoutChangeColor.findViewById(R.id.viewColor3).setOnClickListener(v -> {
             selectedMoodColor = "#F62D1E";
-            imageColor1.setImageResource(0);
-            imageColor2.setImageResource(0);
-            imageColor3.setImageResource(R.drawable.ic_save);
-            imageColor4.setImageResource(0);
-            imageColor5.setImageResource(0);
+            updateSelectedMoodColor(imageColor3, imageColor1, imageColor2, imageColor4, imageColor5);
             setSubtitleIndicatorColor();
         });
 
         layoutChangeColor.findViewById(R.id.viewColor4).setOnClickListener(v -> {
             selectedMoodColor = "#673AB7";
-            imageColor1.setImageResource(0);
-            imageColor2.setImageResource(0);
-            imageColor3.setImageResource(0);
-            imageColor4.setImageResource(R.drawable.ic_save);
-            imageColor5.setImageResource(0);
+            updateSelectedMoodColor(imageColor4, imageColor1, imageColor2, imageColor3, imageColor5);
             setSubtitleIndicatorColor();
         });
 
         layoutChangeColor.findViewById(R.id.viewColor5).setOnClickListener(v -> {
             selectedMoodColor = "#E91E63";
-            imageColor1.setImageResource(0);
-            imageColor2.setImageResource(0);
-            imageColor3.setImageResource(0);
-            imageColor4.setImageResource(0);
-            imageColor5.setImageResource(R.drawable.ic_save);
+            updateSelectedMoodColor(imageColor5, imageColor1, imageColor2, imageColor3, imageColor4);
             setSubtitleIndicatorColor();
         });
 
+        // Initialize the selected mood color based on the availableNote, if any
         if (availableNote != null) {
             final String noteColorCode = availableNote.getColor();
             if (noteColorCode != null && !noteColorCode.trim().isEmpty()) {
                 switch (noteColorCode) {
+                    case "#FFC107":
+                        layoutChangeColor.findViewById(R.id.viewColor1).performClick();
+                        break;
                     case "#2196F3":
                         layoutChangeColor.findViewById(R.id.viewColor2).performClick();
                         break;
@@ -221,13 +208,21 @@ public class CreateMoodActivity extends AppCompatActivity {
             }
         }
 
-
+        // Show delete option if editing an existing note
         if (availableNote != null) {
             layoutChangeColor.findViewById(R.id.layoutDeleteMood).setVisibility(View.VISIBLE);
             layoutChangeColor.findViewById(R.id.layoutDeleteMood).setOnClickListener(v -> {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 showDeleteMoodDialog();
             });
+        }
+    }
+
+    // Method to update selected mood color indicators
+    private void updateSelectedMoodColor(ImageView selected, ImageView... others) {
+        selected.setImageResource(R.drawable.ic_save); // Use your selected button background
+        for (ImageView other : others) {
+            other.setImageResource(0); // Reset others to default state
         }
     }
 
@@ -313,5 +308,4 @@ public class CreateMoodActivity extends AppCompatActivity {
         }
         return filePath;
     }
-
 }

@@ -72,7 +72,7 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:includeFontPadding="false"
         android:padding="@dimen/_10sdp"
-        android:text="DELETE NOTE"
+        android:text="DELETE MOOD"
         android:textAllCaps="true"
         android:textColor="@color/color_delete"
         android:textSize="@dimen/_13ssp"

@@ -1,4 +1,4 @@
-package com.example.moodapp; // Add the package statement here
+package com.example.moodapp;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
@@ -22,13 +22,13 @@ public class MediumTest {
 
     @Test
     public void testCreateAndSaveNewNote() {
-        Espresso.onView(ViewMatchers.withId(R.id.imageAddNotMain))
+        Espresso.onView(ViewMatchers.withId(R.id.imageAddNoteMain))
                 .perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .perform(ViewActions.typeText("Mood2"));
         Espresso.onView(ViewMatchers.withId(R.id.inputSubtitle))
                 .perform(ViewActions.typeText("Emotion2"));
-        Espresso.onView(ViewMatchers.withId(R.id.inputNote))
+        Espresso.onView(ViewMatchers.withId(R.id.inputNoteText))
                 .perform(ViewActions.typeText("I feel sad."));
 
 

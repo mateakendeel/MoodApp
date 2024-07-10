@@ -24,15 +24,15 @@ public class MainActivityTest {
     @Test
     public void testAddNewNote() {
 
-        Espresso.onView(ViewMatchers.withId(R.id.imageAddNotMain))
+        Espresso.onView(ViewMatchers.withId(R.id.imageAddNoteMain))
                 .perform(ViewActions.click());
 
 
         Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .perform(ViewActions.typeText("Mood1"));
         Espresso.onView(ViewMatchers.withId(R.id.inputSubtitle))
-                .perform(ViewActions.typeText("Emotion"));
-        Espresso.onView(ViewMatchers.withId(R.id.inputNote))
+                .perform(ViewActions.typeText("Happines"));
+        Espresso.onView(ViewMatchers.withId(R.id.inputNoteText))
                 .perform(ViewActions.typeText("I feel happy"));
 
 

@@ -30,14 +30,14 @@ public class CreateMoodActivityTest {
 
     @Test
     public void testCreateViewDeleteNote() {
-        // Click on the add note button in MainActivity
+
         Espresso.onView(ViewMatchers.withId(R.id.imageAddNoteMain))
                 .perform(ViewActions.click());
 
-        // Fill in the note details (title, subtitle, content)
+
         String testTitle = "Test Mood Title";
         String testSubtitle = "Test Subtitle";
-        String testContent = "Test note content";
+        String testContent = "Test content";
 
         Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .perform(ViewActions.typeText(testTitle));
@@ -46,69 +46,68 @@ public class CreateMoodActivityTest {
         Espresso.onView(ViewMatchers.withId(R.id.inputNoteText))
                 .perform(ViewActions.typeText(testContent));
 
-        // Save the note
+
         Espresso.onView(ViewMatchers.withId(R.id.imageSaveNote))
                 .perform(ViewActions.click());
 
-        // Wait for a short period to let the note save
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        // Verify that the note is saved by checking if it exists in the RecyclerView
+
         Espresso.onView(ViewMatchers.withId(R.id.notesRecyclerView))
                 .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText(testTitle))));
 
-        // Click on the saved note to view it
+
         Espresso.onView(ViewMatchers.withText(testTitle))
                 .perform(ViewActions.click());
 
-        // Verify that we are in the View/Update mode by checking if the title is displayed
+
         Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .check(ViewAssertions.matches(ViewMatchers.withText(testTitle)));
 
-        // Click on change color button and select a color
+
         Espresso.onView(ViewMatchers.withId(R.id.textChangeColor))
                 .perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.layoutChangeColor))
-                .perform(ViewActions.click()); // Expand color picker
-        Espresso.onView(ViewMatchers.withId(R.id.viewColor2)) // Select a color (example: #2196F3)
+                .perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.viewColor2))
                 .perform(ViewActions.click());
 
-        // Save the updated note
+
         Espresso.onView(ViewMatchers.withId(R.id.imageSaveNote))
                 .perform(ViewActions.click());
 
-        // Wait for a short period to let the note save
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        // Click on the saved note again to view it
+
         Espresso.onView(ViewMatchers.withText(testTitle))
                 .perform(ViewActions.click());
 
-        // Verify that we are still in the View/Update mode
+
         Espresso.onView(ViewMatchers.withId(R.id.inputTittleName))
                 .check(ViewAssertions.matches(ViewMatchers.withText(testTitle)));
 
         Espresso.onView(ViewMatchers.withId(R.id.textChangeColor))
                 .perform(ViewActions.click());
 
-        // Click on delete note option
+
         Espresso.onView(ViewMatchers.withId(R.id.layoutDeleteMood))
                 .perform(ViewActions.click());
 
-        // Confirm delete in dialog
+
         Espresso.onView(ViewMatchers.withId(R.id.textDeleteMood))
                 .perform(ViewActions.click());
 
 
-        // Verify that the note is deleted by checking if it no longer exists in the RecyclerView
         Espresso.onView(ViewMatchers.withId(R.id.notesRecyclerView))
                 .check(ViewAssertions.matches(Matchers.not(ViewMatchers.hasDescendant(ViewMatchers.withText(testTitle)))));
     }
